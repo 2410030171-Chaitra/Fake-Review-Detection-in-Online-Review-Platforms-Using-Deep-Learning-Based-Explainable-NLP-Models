@@ -2,7 +2,16 @@ import re
 import nltk
 from nltk.corpus import stopwords
 
-nltk.download('stopwords')
+# Download required data safely
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
 stop_words = set(stopwords.words('english'))
 
